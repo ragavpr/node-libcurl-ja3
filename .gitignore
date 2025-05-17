@@ -35,3 +35,4 @@ website/
 api/
 
 yarn-error.log
+bun.lock
