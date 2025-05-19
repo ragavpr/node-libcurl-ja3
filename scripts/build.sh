@@ -9,14 +9,14 @@ SRC_ARTIFACTS_FILE="$BUILD_DIR/curl-impersonate.src.tar.gz"
 BUILD_ARTIFACTS_FILE="$BUILD_DIR/curl-impersonate.tar.gz"
 OS=$(uname -s)
 
-BORINGSSL_COMMIT="23768dca563c4e62d48bb3675e49e34955dced12"
+BORINGSSL_COMMIT="673e61fc215b178a90c0e67858bbf162c8158993"
 BORINGSSL_SRC_DIR="$BUILD_DIR/boringssl-$BORINGSSL_COMMIT"
 
 BROTLI_VERSION="1.1.0"
 BROTLI_SRC_DIR="$BUILD_DIR/brotli-$BROTLI_VERSION"
 BROTLI_OUT_DIR="$BROTLI_SRC_DIR/out/installed"
 
-CURL_VERSION="8_7_1"
+CURL_VERSION="8_13_0"
 CURL_SRC_DIR="$BUILD_DIR/curl-$CURL_VERSION"
 CURL_OUT_DIR="$BUILD_DIR/curl-impersonate"
 
@@ -48,7 +48,7 @@ fi
 
 # Build BoringSSL
 build_boringssl() {
-  $MAKE chrome-build
+  $MAKE build
 }
 
 # Build zlib
@@ -117,9 +117,9 @@ configure_build() {
 
 # Build Curl Impersonate
 build_curl_impersonate() {
-  $MAKE chrome-build
-  $MAKE chrome-checkbuild
-  $MAKE chrome-install
+  $MAKE build
+  $MAKE checkbuild
+  $MAKE install
 
   # copy curl include dir
   mkdir -p "$CURL_OUT_DIR/include"
